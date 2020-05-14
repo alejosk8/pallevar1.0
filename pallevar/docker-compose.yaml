@@ -2,7 +2,7 @@ version: '2'
 services:
   db:
     container_name: pallevar_db
-    image: postgres:11
+    image: postgres:10
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
