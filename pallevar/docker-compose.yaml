@@ -10,9 +10,9 @@ services:
     volumes:
       - pallevar-db-data:/var/lib/postgresql/data/pgdata
     ports:
-      - "$port_db:4576"
+      - "$port_db:5432"
   web:
-    container_name: pallevar_odoo
+    container_name: p_odoo
     image: pallevar_odoo:13
     build: ./
     depends_on:
