@@ -1,19 +1,19 @@
 version: '2'
 services:
   db:
-    container_name: pallevar_db
+    container_name: pos_db
     image: postgres:10
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - pallevar-db-data:/var/lib/postgresql/data/pgdata
+      - pos-db-data:/var/lib/postgresql/data/pgdata
     ports:
       - "$port_db:5432"
   web:
-    container_name: pallevar_odoo
-    image: pallevar_odoo:13
+    container_name: pos_odoo
+    image: pos_odoo:12
     build: ./
     depends_on:
       - db
@@ -21,9 +21,9 @@ services:
       - "$port:8069"
       - "$chat_port:8072"
     volumes:
-      - pallevar-web-data:/var/lib/odoo
+      - pos-web-data:/var/lib/odoo
       - ./docker:/etc/odoo/
       - ./addons:/mnt/extra-addons
 volumes:
-    pallevar-web-data:
-    pallevar-db-data:
+    pos-web-data:
+    pos-db-data:
